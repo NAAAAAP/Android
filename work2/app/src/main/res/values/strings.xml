@@ -1,0 +1,40 @@
+<resources>
+    //线性布局
+    <string name="button11" >One,One</string>
+    <string name="button12" >One,Two</string>
+    <string name="button13" >One,Three</string>
+    <string name="button14" >One,Four</string>
+    <string name="button21" >Two,One</string>
+    <string name="button22" >Two,Two</string>
+    <string name="button23" >Two,Three</string>
+    <string name="button24" >Two,Four</string>
+    <string name="button31" >Three,One</string>
+    <string name="button32" >Three,Two</string>
+    <string name="button33" >Three,Three</string>
+    <string name="button34" >Three,Four</string>
+    <string name="button41" >Four,One</string>
+    <string name="button42" >Four,Two</string>
+    <string name="button43" >Four,Three</string>
+    <string name="button44" >Four,Four</string>
+    //约束布局
+    <string name="red">Red</string>
+    <string name="orange">ORANGE</string>
+    <string name="yellow">YELLOW</string>
+    <string name="blue">BLUE</string>
+    <string name="green">GREEN</string>
+    <string name="indigo">INDIGO</string>
+    <string name="violet">VIOLET</string>
+    //表格布局
+    <string name="ctrl_o">Ctrl - O</string>
+    <string name="blank">"    "</string>
+    <string name="open">Opening</string>
+    <string name="save">Save...</string>
+    <string name="ctrl_s">Ctrl - S</string>
+    <string name="save_as">Save as...</string>
+    <string name="ctrl_shift_s">Ctrl - Shift - S</string>
+    <string name="x">× </string>
+    <string name="imports" >Import</string>
+    <string name="emport">Emport...</string>
+    <string name="ctrl_e">Ctrl- E</string>
+    <string name="quit">Quit</string>
+</resources>
