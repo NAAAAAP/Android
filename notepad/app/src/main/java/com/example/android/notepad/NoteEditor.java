@@ -528,11 +528,11 @@ public class NoteEditor extends Activity {
         // Sets up a map to contain values to be updated in the provider.
         ContentValues values = new ContentValues();
         values.put(NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE, System.currentTimeMillis());
-        Long now = Long.valueOf(System.currentTimeMillis());
-        SimpleDateFormat sf = new SimpleDateFormat("yy/MM/dd HH:mm");
-        Date d = new Date(now);
-        String format = sf.format(d);
-        values.put(NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE, format);
+        Long now = Long.valueOf(System.currentTimeMillis());//获取当前时间
+        SimpleDateFormat sf = new SimpleDateFormat("yy/MM/dd HH:mm");//设置时间类型
+        Date d = new Date(now);//时间转换为Date类型
+        String format = sf.format(d);//将时间变成我们需要的sf格式
+        values.put(NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE, format);//将时间存入数据库
 
         // If the action is to insert a new note, this creates an initial title for it.
         if (mState == STATE_INSERT) {

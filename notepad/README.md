@@ -27,7 +27,7 @@ values.put(NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE, format);//将时间存�
 修改适配器内容，增加dataColumns中装配到ListView的内容，所以要同时增加一个文本框来存放时间
 
 ```
-final String[] dataColumns = { NotePad.Notes.COLUMN_NAME_TITLE , NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE} ;//新增时间戳内容
+final String[] dataColumns = { NotePad.Notes.COLUMN_NAME_TITLE , NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE} ;//笔记标题，时间戳
 int[] viewIDs = { android.R.id.text1 ,R.id.text2};//增加文本框存放时间
 ```
 

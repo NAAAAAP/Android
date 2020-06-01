@@ -74,7 +74,7 @@ public class NotesList extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.searchview);
+        setContentView(R.layout.searchview);//加载搜索框布局
 
         // The user does not need to hold down the key to use menu shortcuts.
         setDefaultKeyMode(DEFAULT_KEYS_SHORTCUT);
@@ -125,8 +125,8 @@ public class NotesList extends ListActivity {
 
         // The view IDs that will display the cursor columns, initialized to the TextView in
         // noteslist_item.xml
-        final String[] dataColumns = { NotePad.Notes.COLUMN_NAME_TITLE , NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE} ;
-        int[] viewIDs = { android.R.id.text1 ,R.id.text2};
+        final String[] dataColumns = { NotePad.Notes.COLUMN_NAME_TITLE , NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE} ;//笔记标题，时间戳
+        int[] viewIDs = { android.R.id.text1 ,R.id.text2};//增加文本框存放时间
 
         // Creates the backing adapter for the ListView.
         SimpleCursorAdapter adapter
@@ -161,11 +161,11 @@ public class NotesList extends ListActivity {
                 if (!s.equals("")) {
                     String selection = NotePad.Notes.COLUMN_NAME_TITLE + " GLOB '*" + s + "*'";
                     newCursor = getContentResolver().query(
-                            getIntent().getData(),
-                            PROJECTION,
+                            getIntent().getData(),//获取数据
+                            PROJECTION,//返回笔记ID和标题
                             selection,
                             null,
-                            NotePad.Notes.DEFAULT_SORT_ORDER
+                            NotePad.Notes.DEFAULT_SORT_ORDER//使用默认排序
                     );
                 } else {
                     newCursor = getContentResolver().query(
