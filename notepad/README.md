@@ -7,11 +7,11 @@
 数据库中已有文本创建时间和修改时间两个字段，修改NoteEditor.java编辑updateNote（）函数，选取修改时间字段，并将其格式化存入数据库
 
 ```
-Long now = Long.valueOf(System.currentTimeMillis());
-SimpleDateFormat sf = new SimpleDateFormat("yy/MM/dd HH:mm");
-Date d = new Date(now);
-String format = sf.format(d);
-values.put(NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE, format);
+Long now = Long.valueOf(System.currentTimeMillis());//获取当前时间
+SimpleDateFormat sf = new SimpleDateFormat("yy/MM/dd HH:mm");//设置时间类型
+Date d = new Date(now);//时间转换为Date类型
+String format = sf.format(d);//将时间变成我们需要的sf格式
+values.put(NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE, format);//将时间存入数据库
 ```
 
 编辑NoteList.java中PROJECTION的内容，添加对该字段的描述，这样后面搜索中才能从SQLite中读取修改时间的字段
@@ -27,8 +27,8 @@ values.put(NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE, format);
 修改适配器内容，增加dataColumns中装配到ListView的内容，所以要同时增加一个文本框来存放时间
 
 ```
-final String[] dataColumns = { NotePad.Notes.COLUMN_NAME_TITLE , NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE} ;
-int[] viewIDs = { android.R.id.text1 ,R.id.text2};
+final String[] dataColumns = { NotePad.Notes.COLUMN_NAME_TITLE , NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE} ;//新增时间戳内容
+int[] viewIDs = { android.R.id.text1 ,R.id.text2};//增加文本框存放时间
 ```
 
 修改notelist_item里面的内容，增加一个textview组件
@@ -75,14 +75,14 @@ int[] viewIDs = { android.R.id.text1 ,R.id.text2};
 修改NoteList.java中onCreate()函数的加载布局文件
 
 ```
- setContentView(R.layout.searchview);
+ setContentView(R.layout.searchview);//加载搜索框布局
 ```
 
 设置searchview监听器，首先找到search组件，创造searchView得响应时间，根据传入得s进行搜索，然后写下selection语句NotePad.Notes.COLUMN_NAME_TITLE + " GLOB ‘" + s + "’"，运用getContentResolver().query对SQLite里面得数据进行搜索，PROJECTION则是在设置时间戳得时候已经书写好，如果s为空，则是把所有信息显示出来
 
 ```
 public void SearchView(final SimpleCursorAdapter adapter) {
-        SearchView searchView = findViewById(R.id.search2);
+        SearchView searchView = findViewById(R.id.search2);//找到search组件
         searchView.setSubmitButtonEnabled(true);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -97,16 +97,16 @@ public void SearchView(final SimpleCursorAdapter adapter) {
                 if (!s.equals("")) {
                     String selection = NotePad.Notes.COLUMN_NAME_TITLE + " GLOB '*" + s + "*'";
                     newCursor = getContentResolver().query(
-                            getIntent().getData(),
-                            PROJECTION,
+                            getIntent().getData(), //获取数据
+                            PROJECTION, //返回笔记ID和标题
                             selection,
                             null,
-                            NotePad.Notes.DEFAULT_SORT_ORDER
+                            NotePad.Notes.DEFAULT_SORT_ORDER //使用默认排序
                     );
                 } else {
                     newCursor = getContentResolver().query(
                             getIntent().getData(),
-                            PROJECTION,
+                            PROJECTION,	
                             null,
                             null,
                             NotePad.Notes.DEFAULT_SORT_ORDER
